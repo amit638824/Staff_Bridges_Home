@@ -1,5 +1,5 @@
-import { APP_URL } from '../../config/constants';
 import { useHomeData } from '../../context/HomeDataContext';
+import { getJobApplyHref, openJobInSeekerApp } from '../../utils/deeplink';
 import { money } from '../../utils/format';
 
 export function JobModal() {
@@ -37,7 +37,16 @@ export function JobModal() {
               />
             </div>
             <div className="modal-footer border-0">
-              <a className="btn btn-sb" href={APP_URL} target="_blank" rel="noopener">Apply on Staff Bridges</a>
+              <a
+                className="btn btn-sb"
+                href={getJobApplyHref(selectedJob)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  openJobInSeekerApp(selectedJob);
+                }}
+              >
+                Apply on Staff Bridges <i className="bi bi-arrow-up-right ms-1" />
+              </a>
             </div>
           </div>
         </div>

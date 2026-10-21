@@ -1,4 +1,4 @@
-import { APP_URL, LOGO_URL, PLAY_STORE_RECRUITER, PLAY_STORE_SEEKER } from '../../config/constants';
+import { APP_URL, LOGO_URL, PLAY_STORE_SEEKER } from '../../config/constants';
 
 export function CtaSection() {
   return (

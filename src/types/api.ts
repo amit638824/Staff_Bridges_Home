@@ -16,6 +16,8 @@ export interface Category {
 }
 
 export interface Job {
+  id?: number | string;
+  job_id?: number | string;
   status?: string;
   job_title_name?: string;
   category_name?: string;

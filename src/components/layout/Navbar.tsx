@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { APP_URL, LOGO_URL, PLAY_STORE_RECRUITER, PLAY_STORE_SEEKER } from '../../config/constants';
+import { APP_URL, LOGO_URL, PLAY_STORE_SEEKER } from '../../config/constants';
 import { useTheme } from '../../context/ThemeContext';
 
 const NAV_ITEMS = [

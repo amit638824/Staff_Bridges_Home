@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { APP_URL } from '../../config/constants';
 import { useHomeData } from '../../context/HomeDataContext';
+import { getJobApplyHref, openJobInSeekerApp } from '../../utils/deeplink';
 import { money, stripHtml } from '../../utils/format';
 
 export function JobsSection() {
@@ -72,6 +72,7 @@ export function JobsSection() {
             data-aos-delay="80"
           >
             {pagedJobs.map((job) => {
+              const jobId = job.job_id ?? job.id;
               const loc = [job.locality_name, job.city_name].filter(Boolean).join(', ') || 'India';
               const company = job.company || job.category_name || 'Hiring';
               const initial = String(company).trim().charAt(0).toUpperCase() || 'J';
@@ -86,7 +87,7 @@ export function JobsSection() {
                 : 'Tap details to see full job description.';
 
               return (
-                <SwiperSlide key={`${job.job_title_name}-${job.city_name}-${company}`}>
+                <SwiperSlide key={jobId ? `job-${jobId}` : `${job.job_title_name}-${job.city_name}-${company}`}>
                   <article className="job-slide">
                     <div className="job-card-body">
                       <div className="job-card-top">
@@ -112,7 +113,14 @@ export function JobsSection() {
                       <button type="button" className="btn btn-sb-outline-dark btn-sm btn-detail" onClick={() => openJob(job)}>
                         Details
                       </button>
-                      <a className="btn btn-sb btn-sm" href={APP_URL} target="_blank" rel="noopener">
+                      <a
+                        className="btn btn-sb btn-sm"
+                        href={getJobApplyHref(job)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          openJobInSeekerApp(job);
+                        }}
+                      >
                         Apply <i className="bi bi-arrow-up-right" />
                       </a>
                     </div>

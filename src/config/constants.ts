@@ -29,3 +29,20 @@ export const SUPPORT_DISPLAY = formatInPhone(SUPPORT_PHONE);
 export const SALES_DISPLAY = formatInPhone(SALES_PHONE);
 export const SUPPORT_WHATSAPP = `https://wa.me/91${phoneLast10(SUPPORT_PHONE)}`;
 export const SALES_WHATSAPP = `https://wa.me/91${phoneLast10(SALES_PHONE)}`;
+
+/** Custom scheme deep link into the seeker app job screen */
+export const appSchemeJob = (jobId: string | number) =>
+  `staffbridges://job/${jobId}`;
+
+/** Canonical share URL on the marketing apex (App Links host) */
+export const jobShareUrl = (jobId: string | number) => {
+  const base = SITE_URL.replace(/\/$/, '').replace(/^http:\/\//i, 'https://');
+  return `${base}/job/${jobId}`;
+};
+
+/** Web landing UI on main app (query form) */
+export const jobLandingUrl = (jobId: string | number) => {
+  const base = APP_URL.replace(/\/$/, '');
+  return `${base}/job?id=${encodeURIComponent(String(jobId))}`;
+};
+

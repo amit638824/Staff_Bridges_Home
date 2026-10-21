@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from 'react';
-import { APP_URL, LOGO_URL, PLAY_STORE_RECRUITER, PLAY_STORE_SEEKER } from '../../config/constants';
+import { APP_URL, LOGO_URL, PLAY_STORE_SEEKER } from '../../config/constants';
 import { useHomeData } from '../../context/HomeDataContext';
 import { CitySelect } from '../ui/CitySelect';
 import { Typewriter } from '../ui/Typewriter';
